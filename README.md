@@ -25,7 +25,7 @@ Given opposing ideas, the goal here is to determine the most popular one.
 
 Voter registration is considered out of scope for the purposes of this solution. Suffice to say that voters are registered in a central database where each voter (identified by National ID for example) is associated to the public counterpart of a PKI key pair. Note that the candidates are also registered in the same manner in this database. Voter registration takes place prior to the opening of a given ballot.
 
-This database sits behind a certification authority which publishes the X.501 certificates of all voters and candidates.
+This database sits behind a certification authority which publishes the X.509 certificates of all voters and candidates.
 
 Suppose 4 ideas compete for most popular. Each idea is represented by a candidate. Ideally each voter must cast a vote only once to any one of the 4 candidates of their choosing; although this may very well not be the case (duplicates can and will happen).
 
