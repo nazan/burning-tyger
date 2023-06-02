@@ -7,7 +7,7 @@
 > > By: William Blake  
 
 # Cause
-For the lack of a low cost solution to an electronic ballot system which addresses two key problems.
+For the lack of a low cost solution to an electronic ballot system which addresses 3 key problems.
 
 1. Voter anonymity.
 2. Vote validity (including vote deduplication)
