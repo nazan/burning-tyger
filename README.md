@@ -36,8 +36,8 @@ Given the scenario of 4 candidates, when a voter is ready to cast the vote, the 
 1. Mobile app asks central system for a new vote code; the central system complies and answers with a brand new vote code and the specific method and sequence of encryption.
 2. Voter is presented with an interface to input which candidate he/she chooses to vote for. Voter chooses.
 3. Mobile app splits the vote into 2 parts. Part one being voter of the impending vote whereas part two being what candidate the vote is casted to.
-4. Mobile app prepends the vote code from step 1 to each of the two parts resulting in the final plain texts, each of which will then be fed into the encrytion routine.
-5. Guided by the response given from central server in step one, mobile app encrypts each of the two parts with the explicitly specified public keys. In this case server will specify two public keys for each part since there are 4 candidates.
+4. Mobile app prepends the vote code from step 1 to each of the two parts resulting in the final plain texts, each of which will then be fed into the encryption routine.
+5. Guided by the response given from central server in step 1, mobile app encrypts each of the two parts with the explicitly specified public keys. In this case server will specify two public keys for each part since there are 4 candidates.
     - Part One cypher text = encrypt(encrypt(encrypt(Part One Plaintext, PartOnePubKey0), PartOnePubKey1), OrganizerPubKey)
     - Part Two cypher text = encrypt(encrypt(encrypt(Part Two Plaintext, PartTwoPubKey0), PartTwoPubKey1), OrganizerPubKey)
 6. Mobile app transmits these two parts to the central system at two different timings. The system stores the two parts of the vote on file.
@@ -45,10 +45,10 @@ Given the scenario of 4 candidates, when a voter is ready to cast the vote, the 
 Given the scenario of 4 candidates, when the ballot organizer is ready to close the ballot and initiate a count, the following will happen:  
 1. Central system first handles determining a valid list of vote codes. This is achieved by the following steps.  
     - Decrypts all part 1's of the casted votes using organizer private key.
-    - Transmits the complete list of part one data to each candidate; whereby the recipient candidate must decrypt each row using their private key and return the resulting list.
-    - Each candidate in this cycle handles the task in the same mannger except for the the last one. Difference is, since the plain texts are available for this last decrypter, he/she will remove deplicate voters and return only this deduplicated list of vote codes. Note that the voter information is truncated before returning the result to the central system.
-2. Now that the system has a valid list of vote codes each representing a unique voter, it is now ready to carry out the final part of the count task. That is to get a count of votes for each candidate. This is achieved by carrying out the following steps.
+    - Transmits the complete list of part 1 data to each candidate (only designated part 1 encryptors); whereby the recipient candidate must decrypt each row using their private key and return the resulting list.
+    - Each candidate in this cycle handles the task in the same manner except for the the last one. Difference is, since the plain texts are available for this last decrypter, he/she will remove duplicate voters and return only this deduplicated list of vote codes. Note that the voter information is truncated/dropped before returning the result to the central system.
+2. Now that the system has a valid list of vote codes each representing a unique voter, it is ready to carry out the final part of the count task. That is, to get a count of votes for each candidate. This is achieved by carrying out the following steps.
     - Decrypts all part 2's of the casted votes using the organizer private key.
-    - Transmits the complete list of part two data to each candidate; whereby the recipient candidate must decrypt each row using their private key and return the resulting list. Note that the valid voter list (deduced in Step 1) is also attached to this transmission.
+    - Transmits the complete list of part 2 data to each candidate (only designated part 2 encryptors); whereby the recipient candidate must decrypt each row using their private key and return the resulting list. Note that the valid voter list (deduced in Step 1) is also attached to this transmission.
     - Each candidate in this cycle handles the task in the same mannger except for the the last one. Difference is, since the plain texts are available for this last decrypter, he/she will eliminate all votes that is not in the valid vote codes attachment. Once elimination is complete, now a count of votes won by each candidate is carried out and the result replied to the central system.
 3. Central system reports the ballot results in a proper format.
