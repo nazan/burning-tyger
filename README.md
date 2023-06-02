@@ -37,7 +37,7 @@ Given the scenario of 4 candidates, when a voter is ready to cast the vote, the 
 2. Voter is presented with an interface to input which candidate he/she chooses to vote for. Voter chooses.
 3. Mobile app splits the vote into 2 parts. Part one being voter of the impending vote whereas part two being what candidate the vote is casted to.
 4. Mobile app prepends the vote code from step 1 to each of the two parts resulting in the final plain texts, each of which will then be fed into the encryption routine.
-5. Guided by the response given from central server in step 1, mobile app encrypts each of the two parts with the explicitly specified public keys. In this case server will specify two public keys for each part since there are 4 candidates.
+5. Guided by the response given from central server in step 1, mobile app encrypts each of the two parts using the explicitly specified public keys. In this case server will specify two public keys for each part since there are 4 candidates.
     - Part One cypher text = encrypt(encrypt(encrypt(Part One Plaintext, PartOnePubKey0), PartOnePubKey1), OrganizerPubKey)
     - Part Two cypher text = encrypt(encrypt(encrypt(Part Two Plaintext, PartTwoPubKey0), PartTwoPubKey1), OrganizerPubKey)
 6. Mobile app transmits these two parts to the central system at two different timings. The system stores the two parts of the vote on file.
