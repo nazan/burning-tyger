@@ -52,3 +52,5 @@ Given the scenario of 4 candidates, when the ballot organizer is ready to close 
     - Transmits the complete list of part 2 data to each candidate (only to designated part 2 encryptors); whereby the recipient candidate must decrypt each row using their private key and return the resulting list. Note that the valid voter list (deduced in Step 1) is also attached to this transmission.
     - Each candidate in this cycle handles the task in the same manner except for the the last one. Difference is, since the plain texts are available for this last decryptor, he/she will eliminate all votes that is not in the valid vote codes attachment. Once elimination is complete, now a count of votes won by each candidate is carried out and the result replied to the central system.
 3. Central system reports the ballot results in a proper format.
+
+NOTE: Refer to Notion notes for an alternate [system spec](https://www.notion.so/Voting-system-based-on-PKI-266a4feaf124482297d87f4961987a91).
